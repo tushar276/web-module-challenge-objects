@@ -15,11 +15,14 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(itemName, itemPrice, itemCategory){
+  var newItem = {name: itemName, price: itemPrice, category: itemCategory};
+  return newItem;
 }
 
-/* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+// console.log(createMenuItem('tacos', 8, 'Lunch')) ;
+
+/* 🚀🚀🚀🚀 🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Invoke your function!
 Test your createMenuItems function by doing the following:
   1. Pass values to createMenuItems in order to create the objects (menu items)
@@ -28,6 +31,14 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+
+createMenuItem("Coffee", 5, "Drinks");
+createMenuItem("pizza", 3 , "food");
+createMenuItem("apple", 2 , "fruit");
+
+// console.log(createMenuItem('Coffee',5,'Drinks'));
+// console.log(createMenuItem('pizza',3,'food'));
+// console.log(createMenuItem('apple',2,'fruit'));
 
 
 
@@ -44,12 +55,23 @@ Using the burger object below do the following:
   For example: burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2
 */
 
-export const burger = {
-  name: "Burger", 
-  price: 18, 
-  category: "Lunch", 
-  /*Your code here*/
-}
+export  const burger = {
+   name: "Burger", 
+   price: 18, 
+   category: "Lunch", 
+   discount: function(discountTo) {
+     var price = 0;
+      if(discountTo == "teacher" || discountTo == "student") {
+        price = burger.price * 0.75;
+      } else if (discountTo == "public") {
+        price = burger.price * 0.9;
+      }
+      return price;
+    }
+  }
+  // console.log(burger.discount("teacher"));
+  // console.log(burger.discount("public"));
+
 
 
 
@@ -70,6 +92,13 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
+for(i in reviews){
+  if(reviews[i].name == "Julius") {
+    console.log(reviews[i].feedback);
+  }
+}
+
+
 
 
 
@@ -79,6 +108,8 @@ Using the reviews array above do the following: (no function needed)
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+reviews.push({name: "Tushar", rating: 5, feedback: "hello world"});
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -87,8 +118,12 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   2. log the reviews array to the console to check your work
 */
 
-
-
+for(var i in reviews){
+  if(reviews[i].name == "Reyna") {
+    reviews[i].feedback = "This is Reyna's feedback";
+  }
+}
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -102,9 +137,13 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(reviewsArr, number) {
   /*Your code here*/
+  var statement = reviewsArr[number].name + " gave the restaurant a " + reviewsArr[number].rating + " star review, and their feedback was: " + reviewsArr[number].feedback ;
+  return statement;
 }
+
+console.log(getReviewByIndex(reviews, 2));
 
 
   
@@ -121,10 +160,13 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(reviewsArr) {
+  var lastIndex = (reviewsArr.length - 1);
+  var statement = reviewsArr[lastIndex].name + " gave the restaurant a " + reviewsArr[lastIndex].rating +  " star review, and their feedback was: " + reviewsArr[lastIndex].feedback;
+  return statement;
 } 
 
+console.log(getLastReview(reviews));
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
